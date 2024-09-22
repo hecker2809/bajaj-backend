@@ -5,24 +5,19 @@ const cors = require('cors');
 const app = express();
 const PORT = 5000;
 
-app.listen(PORT, () => {
-    console.log(`Server is running on http://localhost:${PORT}`);
-});
-
-
 app.use(bodyParser.json());
 app.use(cors());
 
-//POST Endpoint
+// POST Endpoint for processing data
 app.post('/bfhl', (req, res) => {
     const { data } = req.body;
 
     if (!data || !Array.isArray(data)) {
         return res.status(400).json({
             is_success: false,
-            user_id: 'aryan_kapoor_15112003',
-            email: 'aryan.kapoor2021@vitstudent.ac.in',
-            roll_number: '21BCE5272',
+            user_id: 'ruchir_sinha',
+            email: 'ra6751@srmist.edu.in',
+            roll_number: 'RA2111028030002',
             numbers: [],
             alphabets: [],
             highest_lowercase_alphabet: []
@@ -55,9 +50,13 @@ app.post('/bfhl', (req, res) => {
     });
 });
 
-//GET Endpoint
+// GET Endpoint for simple status check
 app.get('/bfhl', (req, res) => {
     res.status(200).json({
         operation_code: 1
     });
+});
+
+app.listen(PORT, () => {
+    console.log(`Server is running on http://localhost:${PORT}`);
 });
